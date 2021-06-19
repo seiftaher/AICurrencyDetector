@@ -1,0 +1,51 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Search Image{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <form method="POST" action="" enctype="multipart/form-data" class='form'>
+    <h3 class="form-heading">Count by image <a href="{{ url_for('index') }}" title="Back to homepage"><i
+          class="fa fa-home pull-right"></i></a></h3>
+    <div class="form-group">
+      <label for="currency">Change Currency</label>
+      <select autofocus class="form-control" id="currency" name="currency" type="text">
+        <option value="">None</option>
+        <option value="USD">USD</option>
+        <option value="GBP">GBP</option>
+        <option value="EUR">EUR</option>
+
+      </select>
+    </div>
+    <div id="input">
+      <div class="form-group">
+        <label for="file">Image</label>
+        <input autofocus class="form-control" type="file" name="file" accept="image/*" required>
+      </div>
+    </div>
+
+    <input type="submit" value="Count Coins" class="btn btn-primary btn-lg btn-block">
+  </form>
+</div>
+{% if image %}
+<div class="grid">
+  <img class='item' src="{{ url_for('static',filename='upload/image.jpg') }}" alt="OUTPUT" />
+</div>
+<div>
+  <strong>
+    You Have: 
+  </strong>
+</div>
+{% for key, value in currencies.items() %}
+{% if value%}
+<div>
+  {{key}}: {{value}}
+
+</div>
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if converted %}
+Converted To <strong>{{currency}}</strong> equal {{converted}}
+{% endif%}
+</div>
+{% endblock %}

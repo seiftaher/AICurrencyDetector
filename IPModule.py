@@ -10,14 +10,7 @@ import numpy as np
 import cv2
 from forex_python.converter import CurrencyRates
 
-image = cv2.imread("fgs.jpg")
-
-#Code for Scaling Large Images
-scale_percent = 15 # percent of original size
-w = int(image.shape[1] * scale_percent / 100)
-h = int(image.shape[0] * scale_percent / 100)
-dim = (450, 600)
-image=cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+image = cv2.imread("IMG_1906.JPG")
 
 
 #Function that returns circles within the input image
@@ -25,7 +18,6 @@ image=cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 #Then using Hough to get the coins
 def findCoins(img, showCoins = False):
     scaling = 800.0/max(img.shape[0:2])
-
     img_gray = cv2.resize(img, None, fx=scaling, fy=scaling)
     img_gray = cv2.cvtColor(img_gray, cv2.COLOR_BGR2GRAY)
     img_gray = cv2.blur(img_gray, (5,5))
@@ -147,7 +139,7 @@ if coins is not None:
         Currencies["Piasters"]-=100
 
 # show output and wait for key to terminate program
-cv2.imshow("image",image)
+cv2.imwrite("image.jpg",image)
 cv2.waitKey(0)
 flag=0
 if (Currencies["Euro"] or Currencies["Cents"]):

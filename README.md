@@ -3,7 +3,7 @@ Fyyur
 
 ### Introduction
 
-Fyyur is a Coin Currency detector.
+Fyyur is a Coin Currency detector which can detect more than one currency at one image e.g.(An image containing multiple Euro and Egyptian pound coins).
 
 
 ### Tech Stack
